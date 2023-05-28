@@ -1,5 +1,10 @@
+"use client"
+import store from '@/redux/store'
 import './globals.css'
 import { Inter } from 'next/font/google'
+import { Provider } from 'react-redux'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,7 +16,13 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Header/>
+        <Provider store={store}>
+           {children}
+        </Provider>
+       <Footer/>
+        </body>
     </html>
   )
 }
